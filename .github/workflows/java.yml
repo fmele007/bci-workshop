@@ -15,3 +15,4 @@ jobs:
 
       - name: Build application
         run: mvn clean package -DskipTests
+        working-directory: app
