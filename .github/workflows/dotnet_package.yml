@@ -9,15 +9,15 @@ jobs:
     runs-on: ubuntu-latest
     strategy:
       matrix:
-        dotnet-version: [ '3.1.x', '6.0.x' ]
+        dotnet: [ '3.1.x', '6.0.x' ]
  
     steps:
       - uses: actions/checkout@v5
-      - name: Setup dotnet ${{ matrix.dotnet-version }}
+      - name: Setup dotnet ${{ matrix.dotnet }}
         uses: actions/setup-dotnet@v5
         id: stepid
         with:
-          dotnet: ${{ matrix.dotnet-version }}
+          dotnet-version: ${{ matrix.dotnet }}
       - name: Create temporary global.json
         run: echo '{"sdk":{"version":"${{ steps.stepid.outputs.dotnet-version }}"}}' > ./global.json
       # You can test your matrix by printing the current dotnet version
